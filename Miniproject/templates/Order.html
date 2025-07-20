@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Menu - My Food App{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Our Menu</h2>
+    <div class="row">
+        {% for item in menu_items %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.Dishname }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.Dishname }}</h5>
+                    <p class="card-text">{{ item.Description }}</p>
+                    <p class="card-text"><strong>₹{{ item.price }}</strong></p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
