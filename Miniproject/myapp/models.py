@@ -7,6 +7,8 @@ class Restaurant(models.Model):
     address = models.TextField()
     phone = models.CharField(max_length=20)
     owner=models.ForeignKey(User,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
 class MenuItem (models.Model):
     restaurant=models.ForeignKey(Restaurant,on_delete=models.CASCADE,related_name='menu_items')
     Dishname =models.CharField(max_length=255)
@@ -15,6 +17,8 @@ class MenuItem (models.Model):
     image=models.ImageField(upload_to='dishimage')
     category=models.CharField(max_length=100)
     rating=models.FloatField(default=0.0)
+    def __str__(self):
+        return self.Dishname
 class Cart(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
 class Cartitem(models.Model):
